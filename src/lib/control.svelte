@@ -40,11 +40,9 @@
 
 
   function hadlekey(e) {
-    // Si se presiona Enter o Espacio
     if (e.key === 'Enter' || e.key === ' ') {
-      // Prevenir el comportamiento por defecto (por ejemplo, para evitar que se envíe un formulario si el botón está en uno)
-      e.preventDefault();
-      // Llamar a tu función para manejar el evento
+      // Prevenir el comportamiento por defecto... pero no si se edita?
+      if (!editando) e.preventDefault();
       manejaClick();
     }
   }
@@ -84,7 +82,7 @@
 
   function hkeyMeteDireccion(e, cual, donde){
     if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
+      if (!editando) e.preventDefault();
       meteDireccion(cual, donde);
     }
   }
@@ -98,7 +96,7 @@
 
   function hkeyQuitaDireccion(e, cual){
     if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
+      if (!editando) e.preventDefault();
       meteDireccion(cual);
     }
   }
